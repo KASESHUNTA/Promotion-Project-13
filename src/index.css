@@ -1,0 +1,600 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans";
+}
+body {
+  background-color: #edebeb;
+  padding-top: 70px;
+}
+/* ヘッダー関連 */
+.key-visual {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: bold;
+  color: #fff;
+  position: relative; /* 必須 */
+  bottom: 500px;
+  margin-left: 70px;
+}
+
+/* こんなお悩みはありませんか */
+.worry-content {
+  position: relative;
+  text-align: center;
+  font-size: 36px;
+}
+
+.worry-image-left {
+  position: absolute;
+  left: 90px;
+  bottom: -350px;
+}
+
+.worry-image-right {
+  position: absolute;
+  right: 90px;
+  bottom: -321px;
+}
+.highlight-title {
+  font-size: 64px;
+  color: #e71d28;
+  font-weight: bold;
+}
+
+.highlight-expensive {
+  color: #e71e28;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.highlight-no-feature {
+  color: #e71e28;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.highlight-solution {
+  color: #1eaee7;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+/* h2のみだし */
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+h3 {
+  font-size: 36px;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+nav {
+  ul {
+    height: 100%;
+    gap: 20px;
+    align-items: center;
+    display: flex;
+    li {
+      list-style-type: none;
+    }
+  }
+}
+/* ヘッダー */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #3f3f3f; /* 既存背景色 */
+  display: flex;
+  align-items: center;
+  padding: 0;
+  z-index: 1000; /* 他要素より上 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 固定用の影 */
+}
+
+.header__logo {
+  background-color: #edebeb;
+  margin: 0;
+  padding: 8px;
+}
+
+.header__logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+nav {
+  margin-left: 70px; /* ロゴとナビゲーションを分ける */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left:400px;
+}
+
+nav ul li {
+  margin-right: 20px; /* 各リンク間の余白 */
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* 最後の要素には余白を適用しない */
+}
+
+.header__button {
+  padding: 14px 36px;
+  border-radius: 12px;
+  background-color: #e71e28;
+  color: white;
+  margin-left: 17px; /* ボタン同士の余白 */
+  margin-right: 5px;
+  /* ↑後日修正 */
+  display: inline-block;
+  text-align: center;
+}
+
+/* お問い合わせボタンボタンの後ろ */
+/* コンテナのスタイリング */
+.inquiry_container {
+  background-color: #3f3f3f;
+  text-align: center;
+  padding: 31px 0;
+  margin-top: 120px;
+}
+
+/* ボタンのスタイリング */
+.inquiry_button a {
+  display: inline-block;
+  padding: 16px 60px;
+  border-radius: 30px;
+  background-color: #e71e28;
+  color: #fff;
+  font-size: 32px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 色と背景色をスムーズに変更 */
+}
+
+.inquiry_button a:hover {
+  background-color: rgba(231, 29, 41, 0.5); /* 背景を明るくする */
+  color: #cccccc; /* 文字を暗くする */
+}
+.class1 {
+  display: flex;
+  flex-direction: row;
+  gap: 74px;
+  margin-bottom: 120px;
+  justify-content: center;
+}
+
+.class2 {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 74px;
+
+  /* gapスマホは% */
+}
+
+.features_title {
+  font-size: 36px;
+  border-bottom: 3px solid #000;
+  display: inline-block;
+  padding-bottom: 1px;
+}
+
+.features_description {
+  font-size: 24px;
+}
+.feature_bgc {
+  background-color: #3f3f3f;
+  border-radius: 40px;
+  padding: 45px 41px;
+}
+
+
+/* 料金比較表 */
+.whole-table {
+  width: 100%;
+  background-color: #fff;
+  padding: 120px 0;
+}
+
+.comparison_p {
+  text-align: center;
+
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 120px;
+}
+
+.comparison-table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* テーブル全体のデザイン */
+.comparison-table dl {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-spacing: 0;
+}
+
+/* ヘッダー部分 */
+.table-header {
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 10px;
+}
+
+.zion-logo {
+  width: 150px;
+  height: auto;
+}
+
+.header-titles {
+  display: flex;
+  font-size: 20px;
+}
+
+/* 各行のデザイン */
+.row {
+  display: table-row;
+  background: #fff;
+}
+
+
+.row dt,
+.row dd {
+  display: table-cell;
+  padding: 15px;
+  border: 2px solid #d9d9d9;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px; 
+}
+
+.row dd[data-content="pricing"],
+.row dd[data-content="time"],
+.row dd[data-content="participants"] {
+  font-size: 16px;
+  
+}
+
+.row_border {
+  position: relative;
+  z-index: 10;
+}
+.row_border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 100%;
+  height: calc(100% + 2px);
+  border-left: 2px solid #e71d29;
+  border-right: 2px solid #e71d29;
+}
+.row:first-of-type .row_border {
+  border-top: 2px solid #e71d29;
+}
+.row:last-of-type .row_border {
+  border-bottom: 2px solid #e71d29;
+}
+
+
+
+/* 無制限表示用のスタイル */
+.highlight-unlimited {
+  color: #e6111b;
+  font-size: 20px;
+}
+
+
+/* 左端の項目名 */
+.row dt {
+  background-color: #3f3f3f;
+  color: #fff;
+}
+
+/* ZIONのハイライト */
+.highlight-zion {
+  color: #e6111b;
+}
+
+/* ブレイクアウトルームの△ハイライト */
+.highlight-limited {
+  color: #40ff16;
+}
+
+.row dd br {
+  display: block;
+  margin: 5px 0;
+}
+
+/* ご契約の流れ */
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 63px;
+  background-image: url("./arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 70%;
+  background-size: 70%;
+  margin-bottom: 120px;
+}
+
+.step {
+  text-align: center;
+  border-radius: 30px;
+  background-color: #3f3f3f;
+  width: 250px;
+  height: 250px;
+}
+
+.step_text_color {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+  margin-top: 103px;
+}
+.step_introduction {
+  font-weight: bold;
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+  position: relative;
+  background-color: #e71d29;
+  margin-inline: 29%;
+  padding-block: 15px;
+  /* position: relative; */
+}
+.step_introduction::before {
+  content: "";
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background: url("./arrow2.svg") no-repeat;
+  background-position: right;
+  position: absolute;
+  display: block;
+  right: -79px;
+}
+
+/* よくある質問 */
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.question {
+  width: 100%;
+  margin-bottom: 120px;
+}
+
+.question p:first-child {
+  /* Q用のスタイル */
+  font-size: 24px;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.question p:last-child {
+  /* A用のスタイル */
+  font-size: 24px;
+
+  border-bottom: 3px solid #000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.q-label {
+  color: #1188f0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.a-label {
+  color: #e71d29;
+  font-size: 32px;
+  font-weight: 3px bold;
+
+}
+
+/* フッダー */
+
+footer {
+  background: #3f3f3f;
+  display: flex;
+  margin-top: 120px;
+}
+
+footer {
+  p {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    margin: 120px;
+  }
+}
+
+/* 導入事例 */
+
+.company-section {
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+}
+
+.company-grid {
+  display: flex;
+  justify-content: center;
+  gap: 142px;
+}
+
+.company-card {
+  width: 504px;
+  margin: 10px;
+}
+
+.logo-background {
+  background-color: #ffffff;
+  width: 504px;
+  height: 402px;
+  flex-shrink: 0;
+  border-radius: 25px 25px 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-name {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.text-background {
+  font-size: 20px;
+  background-color: #3f3f3f;
+  width: 504px;
+  height: 259.283px;
+  flex-shrink: 0;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 0 0 25px 25px;
+}
+
+.company-logo {
+  /* position と top を削除 */
+  max-width: 80%; /* 必要に応じて調整 */
+  height: auto;
+}
+
+/* 料金セクション */
+.fee-list {
+  text-align: center;
+  padding: 0 20px;
+  max-width: 1200px; /* コンテナの最大幅を設定 */
+  margin: 0 auto; /* 中央寄せ */
+}
+.fee-plans {
+  display: flex;
+  justify-content: center;
+  gap: 142px; /* 画像間の距離を広げる */
+  margin-bottom: 40px;
+}
+
+.fee_common {
+  margin-bottom: 120px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.initial-fee {
+  margin-bottom: 120px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.fee-item {
+  width: 450px; /* 基本の幅を設定 */
+  min-height: 300px; /* 最小の高さを設定 */
+  margin: 0;
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+.business {
+  color: #d0a900;
+}
+
+.fee-item h4 {
+  text-decoration: underline;
+  font-size: 24px;
+  margin-bottom: 15px;
+  position: relative; /* 追加 */
+  z-index: 2; /* 追加 */
+}
+
+.price-container {
+  font-size: 32px;
+  margin-bottom: 15px;
+  position: relative; /* 追加 */
+  z-index: 2; /* 追加 */
+}
+
+.fee-item p.description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  position: relative; /* 追加 */
+  z-index: 2; /* 追加 */
+}
+
+.fee_img {
+  width: 100%; /* 親要素に対して100%に */
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 15px; /* 角を丸く */
+  object-fit: cover; /* 画像のアスペクト比を保持 */
+}
+.price-number {
+  font-size: 48px;
+}
+
+.price-tilde {
+  font-size: 48px;
+}
+
+.price-unit {
+  font-size: 48px;
+}
+
+.price-period {
+  font-size: 20px;
+}
+
+/* 注意書き用のスタイル */
+.fee_Note {
+  font-size: 20px;
+  text-align: left;
+  margin-top: 200px;
+}
