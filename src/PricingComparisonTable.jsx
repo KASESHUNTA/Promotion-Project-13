@@ -2,13 +2,23 @@ import React from "react";
 
 // データ定義
 const tableData = [
+{
+  label: "",
+  ZION:  <img src="./ZION_logo2.png" alt="ZIONロゴ" className="zion-logo" />,
+  A: "A社",
+  B: "B社",
+  C: "C社",
+
+
+
+},
   {
     label: "使用環境",
     ZION: "Webブラウザ",
     A: "専用アプリケーション",
     B: "Webブラウザ",
     C: "専用アプリケーション",
-  },
+  }, 
   {
     label: "アカウント登録",
     ZION: <span className="highlight-zion">不要</span>,
@@ -119,45 +129,46 @@ const tableData = [
   },
 ];
 
-// コンポーネント定義
-const ComparisonTable = () => {
-  return (
-    <div className="comparison-table-wrapper">
-      {/* タイトル部分 */}
-      <div>
-        <h2>他社との料金比較表</h2>
-   
-        <p className="comparison_p">
-          他社と比較して圧倒的なコストパフォーマンスを実現
-        </p>
-      </div>
 
-      {/* 比較表 */}
-      <div className="whole-table">
-        <div className="comparison-table">
-          <div className="table-header">
-            <img src="./ZION_logo2.png" alt="ZIONロゴ" className="zion-logo" />
-            <div className="header-titles">
-              <span>A社</span>
-              <span>B社</span>
-              <span>C社</span>
-            </div>
+// ... existing code ...
+
+// コンポーネント定義
+function ComparisonTable() {
+  return (
+    <section id="comparison">
+      <div className="comparison-table-wrapper">
+        {/* タイトル部分 */}
+        <div>
+          <h2>他社との料金比較表</h2>
+          <p className="comparison_p">
+            他社と比較して圧倒的なコストパフォーマンスを実現
+          </p>
+        </div>
+
+        {/* 比較表 */}
+        <div className="whole-table">
+          <div className="comparison-table">
+         
+            <dl>
+              {tableData.map((row, index) => (
+                <div className="row" key={index}>
+                  <dt>{row.label}</dt>
+                  <dd className="row_border" data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.ZION}</dd>
+                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.A}</dd>
+                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.B}</dd>
+                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.C}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <dl>
-          {tableData.map((row, index) => (
-  <div className="row" key={index}>
-    <dt>{row.label}</dt>
-    <dd className="row_border" data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.ZION}</dd>
-    <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.A}</dd>
-    <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.B}</dd>
-    <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.C}</dd>
-  </div>
-))}
-          </dl>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+
+  
+}
+
+
 
 export default ComparisonTable;

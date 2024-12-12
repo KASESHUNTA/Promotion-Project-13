@@ -11,13 +11,15 @@ export const worriesData = [
         はありませんか？
       </>
     ),
-    description: (
-      <>
-        現在使っているWeb会議が<br />
-        <span className="highlight highlight-expensive">「高額」</span>
-        <span className="highlight highlight-no-feature">「機能がない」</span>
-      </>
-    ),
+   description: (
+  <>
+    現在使っているWeb会議が<br />
+    <span className="highlight highlight-expensive">「高額」</span>
+    
+    <span className="highlight highlight-no-feature">「機能がない」</span>
+    <div className="yazirusi"></div>
+  </>
+),
     solution: (
       <>
         その悩み、ZION-MEETが
@@ -33,7 +35,6 @@ export const worriesData = [
 ];
 function Worry({
   id,
-  key_visual,
   title,
   description,
   solution,
@@ -44,7 +45,7 @@ function Worry({
 }) {
   return (
     <div className="worry-container">
-      <img className="key-visual" src={key_visual} alt="キービジュアル" />
+      <div className="key-visual"></div>
       <h1 className="worry-heading">
         コストを抑えて会社に
         <br />
@@ -57,8 +58,10 @@ function Worry({
         <p className="worry-description">{description}</p>
         <p className="worry-solution">{solution}</p>
       </div>
-      <img className="worry-image-left" src={leftImageUrl} alt={leftAlt} />
-      <img className="worry-image-right" src={rightImageUrl} alt={rightAlt} />
+      <div className="worry-images-container">
+        <img className="worry-image-left" src={leftImageUrl} alt={leftAlt} />
+        <img className="worry-image-right" src={rightImageUrl} alt={rightAlt} />
+      </div>
     </div>
   );
 }

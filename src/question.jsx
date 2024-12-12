@@ -35,7 +35,7 @@ const Question = ({ question, answer }) => (
 );
 
 const Questions = () => (
-  <section className="questions">
+  <section id="faq" className="questions">
     <h2>よくある質問</h2>
     {questionData.map(({ id, question, answer }) => (
       <Question key={id} question={question} answer={answer} />

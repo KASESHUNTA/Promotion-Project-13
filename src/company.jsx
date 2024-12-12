@@ -7,7 +7,7 @@ const companyData = [
     name: "株式会社ドコモCS様",
     logo: "企業ロゴ1",
     description:
-      "弊社内では、ドコモショップにおいて、高齢の<br/>お客様へのスマートフォンサポート業務を<br/>円滑に進めるための強力なツールとして活用されて<br/>います。",
+      "弊社内では、ドコモショップにおいて、<br/>高齢のお客様へのスマートフォンサポー<br/>ト業務を円滑に進めるための強力なツー<br/>ルとして活用されています。",
     imageUrl: "./docomo_logo.svg",
     alt: "株式会社docomoのロゴ",
   },
@@ -16,7 +16,7 @@ const companyData = [
     name: "株式会社リップルコミュニティ様",
     logo: "企業ロゴ2",
     description:
-      "弊社内では入社の面談、商談に利用し、問題が<br/>発生した場合のみZOOMを使う動きとなっています。<br/>追加オプションツールによるGoogleカレ<br/>ンダーへの追加が便利で社内定例会議など幅広く<br/>利用してます。",
+      "弊社内では入社の面談、商談に利用し、<br/>問題が発生した場合のみZOOMを使う<br/>動きとなっています。追加オプションツー<br/>ルによるGoogleカレンダーへの追加が便<br/>利で社内定例会議など幅広く利用してま<br/>す。",
     imageUrl: "./ripty_logo.svg",
     alt: "株式会社リップルのロゴ",
   },
@@ -49,7 +49,7 @@ function Companys(props) {
 
 function Company() {
   return (
-    <section className="company-section">
+    <section id="cases" className="company-section">
       <h2 className="section-title">企業様の導入事例</h2>
       <div className="company-grid">
         {companyData.map((company) => (

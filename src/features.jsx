@@ -58,12 +58,16 @@ function Feature({ id, title, description, imageUrl, alt }) {
   
   return (
     <div className={clsx("class1", id % 2 === 0 && "class2")}>
-      <div>
+      <div className="feature_text">
         <h3 className="features_title">{title}</h3>
         <p className="features_description">{formattedDescription}</p>
       </div>
       <div className="feature_bgc">
-        <img className="feature_img" src={imageUrl} alt={alt} />
+        <img 
+          className={clsx("feature_img", id === 2 && "feature_img_id2")} 
+          src={imageUrl} 
+          alt={alt} 
+        />
       </div>
     </div>
   );
@@ -71,7 +75,7 @@ function Feature({ id, title, description, imageUrl, alt }) {
 
 function Features() {
   return (
-    <section>
+    <section id="features ">
       <h2>ZION-MEETの特長</h2>
       {featuresData.map((feature) => (
         <Feature
@@ -85,6 +89,8 @@ function Features() {
       ))}
     </section>
   );
+  
 }
 
 export default Features;
+
