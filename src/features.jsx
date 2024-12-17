@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
 
 export const featuresData = [
@@ -48,25 +50,57 @@ export const featuresData = [
     alt: "会社員がPCを触っている画像",
   },
 ];
+
+// GSAP プラグイン登録
+gsap.registerPlugin(ScrollTrigger);
+
 function Feature({ id, title, description, imageUrl, alt }) {
+  const featureRef = useRef(null);
+
+  useEffect(() => {
+    if (featureRef.current) {
+      gsap.fromTo(
+        featureRef.current,
+        { opacity: 0, y: 100 },  // 初期値
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: featureRef.current,
+            start: "top bottom",  // 開始位置
+            end: "top 50%",       // 終了位置
+            once: true,           // 一度だけ
+
+          },
+        }
+      );
+    }
+  }, []);
+  
+
+  // 改行タグの処理
   const formattedDescription = description.split("<br>").map((line, index) => (
     <React.Fragment key={index}>
       {line}
       <br />
     </React.Fragment>
   ));
-  
+
   return (
-    <div className={clsx("class1", id % 2 === 0 && "class2")}>
+    <div
+      ref={featureRef}
+      className={clsx("class1", id % 2 === 0 && "class2")}
+    >
       <div className="feature_text">
         <h3 className="features_title">{title}</h3>
         <p className="features_description">{formattedDescription}</p>
       </div>
       <div className="feature_bgc">
-        <img 
-          className={clsx("feature_img", id === 2 && "feature_img_id2")} 
-          src={imageUrl} 
-          alt={alt} 
+        <img
+          className={clsx("feature_img", id === 2 && "feature_img_id2")}
+          src={imageUrl}
+          alt={alt}
         />
       </div>
     </div>
@@ -75,7 +109,7 @@ function Feature({ id, title, description, imageUrl, alt }) {
 
 function Features() {
   return (
-    <section id="features ">
+    <section id="features">
       <h2>ZION-MEETの特長</h2>
       {featuresData.map((feature) => (
         <Feature
@@ -89,8 +123,6 @@ function Features() {
       ))}
     </section>
   );
-  
 }
 
 export default Features;
-

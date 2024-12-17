@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // データ定義
 const tableData = [
@@ -130,13 +132,35 @@ const tableData = [
 ];
 
 
-// ... existing code ...
-
+// GSAP プラグイン登録
+gsap.registerPlugin(ScrollTrigger);
 // コンポーネント定義
 function ComparisonTable() {
+  const comparisonTableRef = useRef(null);
+
+  useEffect(() => {
+    if (comparisonTableRef.current) {
+      gsap.fromTo(
+        comparisonTableRef.current,
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: comparisonTableRef.current,
+            start: "top bottom",
+            end: "top 50%",
+            once: true,
+          },
+        }
+      );
+    }
+  }, []);
+
   return (
     <section id="comparison">
-      <div className="comparison-table-wrapper">
+      <div className="comparison-table-wrapper" ref={comparisonTableRef}>  {/* ここにrefを追加 */}
         {/* タイトル部分 */}
         <div>
           <h2>他社との料金比較表</h2>
@@ -148,7 +172,6 @@ function ComparisonTable() {
         {/* 比較表 */}
         <div className="whole-table">
           <div className="comparison-table">
-         
             <dl>
               {tableData.map((row, index) => (
                 <div className="row" key={index}>
@@ -165,10 +188,6 @@ function ComparisonTable() {
       </div>
     </section>
   );
-
-  
 }
-
-
 
 export default ComparisonTable;

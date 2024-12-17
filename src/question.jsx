@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const questionData = [
   {
@@ -23,16 +25,43 @@ const questionData = [
   },
 ];
 
-const Question = ({ question, answer }) => (
-  <div className="question">
-    <p>
-      <span className="q-label">Q</span>{question.slice(1)}
-    </p>
-    <p>
-      <span className="a-label">A</span>{answer.slice(1)}
-    </p>
-  </div>
-);
+gsap.registerPlugin(ScrollTrigger);
+
+const Question = ({ question, answer }) => {
+  const questionRef = useRef(null);
+
+  useEffect(() => {
+    if (questionRef.current) {
+      gsap.fromTo(
+        questionRef.current,
+        { opacity: 0, y: 100 }, // 初期値
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: questionRef.current,
+            start: "top bottom",  // 開始位置
+            end: "top 50%",       // 終了位置
+            once: true,           // 一度だけ
+          },
+        }
+      );
+    }
+  }, []);
+
+  return (
+    <div ref={questionRef} className="question">
+      <p>
+        <span className="q-label">Q</span>{question.slice(1)}
+      </p>
+      <p>
+        <span className="a-label">A</span>{answer.slice(1)}
+      </p>
+    </div>
+  );
+};
 
 const Questions = () => (
   <section id="faq" className="questions">

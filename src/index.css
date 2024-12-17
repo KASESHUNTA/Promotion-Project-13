@@ -27,9 +27,7 @@ h1 {
   font-size: 64px;
   font-weight: bold;
   color: #fff;
-
 }
-
 
 /* ヘッダー */
 header {
@@ -120,6 +118,9 @@ nav ul li:last-child {
 }
 
 /* こんなお悩みはありませんか */
+.solution-break {
+  display: none;
+}
 .worry-content {
   position: relative;
   text-align: center;
@@ -199,7 +200,7 @@ nav ul li:last-child {
   margin: 20px auto; /* 上下の間隔を調整 */
   border-left: 15px solid transparent; /* 左の斜め部分 */
   border-right: 15px solid transparent; /* 右の斜め部分 */
-  border-top: 20px solid #EDEBEB; /* 矢印の色 */
+  border-top: 20px solid #edebeb; /* 矢印の色 */
   position: relative; /* 必要なら他の要素に対して調整可能 */
 }
 /* h2のみだし */
@@ -261,6 +262,7 @@ a {
   margin-bottom: 120px;
   justify-content: center;
 }
+
 .class2 .features_title {
   text-align: left;
 }
@@ -313,7 +315,6 @@ a {
   border-radius: 40px;
   padding: 45px 41px;
   aspect-ratio: 613/419;
-  
 }
 .class2 .feature_bgc {
   margin-right: 0;
@@ -738,10 +739,11 @@ footer {
 
   h2 {
     font-size: 20px;
-    margin-bottom: 45px;
+    margin-bottom: 42px;
+    margin-top: 42px;
   }
   h3 {
-    font-size: 20px;
+    font-size: 20px !important;
   }
   h4 {
     font-size: 16px;
@@ -828,6 +830,41 @@ footer {
 
   .key-visual {
     background-image: url("./key_visual_sp.png");
+    margin-top: 41px;
+  }
+  .worry-container {
+    padding-bottom: 90px;
+  }
+
+  /* worry-images-container全体の幅調整 */
+  .worry-images-container {
+    width: 100%;
+    padding: 0 20px; /* スマホ時のパディング縮小 */
+    position: relative;
+    margin-top: -50px; /* 必要なら調整 */
+  }
+  .solution-break {
+    display: inline; /* 表示 */
+  }
+
+  /* 画像の左側スタイル調整 */
+  .worry-image-left {
+    width: 20%;
+    max-width: 200px; /* 最大幅を制限 */
+    height: auto;
+    position: absolute;
+    left: 5%; /* 左端に寄せる */
+    bottom: 0;
+  }
+
+  /* 画像の右側スタイル調整 */
+  .worry-image-right {
+    width: 20%;
+    max-width: 200px; /* 最大幅を制限 */
+    height: auto;
+    position: absolute;
+    right: 5%; /* 右端に寄せる */
+    bottom: 0;
   }
 
   highlight-title {
@@ -849,23 +886,56 @@ footer {
     font-size: 16px;
   }
 
-  .worry-container {
-    padding: 0 15px;
-  }
-
   /* Features セクション */
   .class1,
   .class2 {
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 60px;
+    display: flex; /* Flexboxを利用 */
+    flex-direction: column; /* 縦に並べる */
+
+    margin-bottom: 41px;
+  }
+  .features_title {
+    width: 87%;
+  }
+  .class1 .features_title {
+    text-align: left;
+    margin-left: 13%;
+  }
+  .class2 .features_title {
+    text-align: right;
+    margin-right: 13%;
+  }
+  .class2 .features_description {
+    justify-content: center;
+  }
+  .features_description {
+    justify-content: center;
+  }
+
+  .feature_text {
+    order: 2; /* テキストを画像の下に表示 */
+    text-align: center; /* テキストを中央揃え */
+    margin-top: 20px; /* 上に余白 */
+  }
+  .features_title {
+    text-align: center; /* タイトルを中央寄せ */
+    margin-bottom: 20px; /* タイトル下に余白を追加 */
   }
 
   .feature_bgc {
-    padding: 21px;
-    border-radius: 20px;
-    width: 70%; /* コンテナの幅を調整 */
-    margin: 0 auto; /* 中央寄せ */
+    order: 1; /* 画像を上に表示 */
+    width: 80%; /* 画像の幅を親要素いっぱいに広げる */
+    margin: 0 auto; /* 中央揃え */
+  }
+  .class2 .feature_bgc {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .feature_img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .feature_bgc img {
@@ -876,6 +946,8 @@ footer {
     margin: 0 auto; /* 中央寄せ */
   }
   .features_description {
+    text-align: center;
+    margin: 0 auto;
     font-size: 14px;
     line-height: 1.5;
   }
@@ -893,6 +965,8 @@ footer {
 
   .text-background {
     font-size: 14px;
+    height: 148.283px;
+    padding: 1px 10px;
   }
 
   .company-card {
@@ -900,11 +974,12 @@ footer {
     margin: 0 auto; /* 左右のマージンを自動で調整して中央寄せ */
   }
   .logo-background {
-    height: 300px;
+    height: 230px;
   }
 
   .company-name {
     font-size: 16px;
+    margin-top: 0px;
   }
 
   .logo-background,
@@ -925,6 +1000,7 @@ footer {
   }
   .fee_Note {
     font-size: 14px;
+    margin-top: 42px;
   }
 
   .fee-item {
@@ -933,6 +1009,12 @@ footer {
 
   .comparison_p {
     font-size: 0; /* テキストを見えなくする */
+  }
+  .fee-item h4 {
+    margin-top: 0;
+  }
+  .fee-item p.description {
+    margin-bottom: 83px;
   }
 
   /* 新しいテキストを表示する */
@@ -954,6 +1036,10 @@ footer {
     flex-direction: column;
     gap: 20px;
     padding: 0;
+  }
+  .row dt,
+  .row dd {
+    padding: 30px;
   }
 
   /* 各行のデザイン */
@@ -1009,7 +1095,7 @@ footer {
   .steps-container {
     flex-direction: column;
     gap: 20px;
-    background-image: none;
+    background-image: url("./arrowtate.svg");
   }
 
   .step {

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 const companyData = [
@@ -21,17 +23,38 @@ const companyData = [
     alt: "株式会社リップルのロゴ",
   },
 ];
+gsap.registerPlugin(ScrollTrigger);
 
 function Companys(props) {
-  // 改行文字列を配列に分割
+  const companyRef = useRef(null); // useRefの設定
+
+  useEffect(() => {
+    if (companyRef.current) {
+      gsap.fromTo(
+        companyRef.current,
+        { opacity: 0, y: 100 },  // 初期値
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: companyRef.current,
+            start: "top bottom",  // 開始位置
+            end: "top 50%",       // 終了位置
+            once: true,           // 一度だけ
+          },
+        }
+      );
+    }
+  }, []);
+
   const descriptionLines = props.description.split('<br/>');
 
   return (
-    <div className="company-card">
+    <div className="company-card" ref={companyRef}>
       <div className="logo-background">
         <img src={props.imageUrl} alt={props.alt} className="company-logo" />
       </div>
-      
       <div className="text-background">
         <p className="company-name">{props.name}</p>
         <p className="company-description">
