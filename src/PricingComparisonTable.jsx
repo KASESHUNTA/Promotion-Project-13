@@ -4,23 +4,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // データ定義
 const tableData = [
-{
-  label: "",
-  ZION:  <img src="./ZION_logo2.png" alt="ZIONロゴ" className="zion-logo" />,
-  A: "A社",
-  B: "B社",
-  C: "C社",
-
-
-
-},
+  {
+    label: "",
+    ZION: <img src="./ZION_logo2.png" alt="ZIONロゴ" className="zion-logo" />,
+    A: "A社",
+    B: "B社",
+    C: "C社",
+  },
   {
     label: "使用環境",
     ZION: "Webブラウザ",
     A: "専用アプリケーション",
     B: "Webブラウザ",
     C: "専用アプリケーション",
-  }, 
+  },
   {
     label: "アカウント登録",
     ZION: <span className="highlight-zion">不要</span>,
@@ -131,7 +128,6 @@ const tableData = [
   },
 ];
 
-
 // GSAP プラグイン登録
 gsap.registerPlugin(ScrollTrigger);
 // コンポーネント定義
@@ -160,7 +156,9 @@ function ComparisonTable() {
 
   return (
     <section id="comparison">
-      <div className="comparison-table-wrapper" ref={comparisonTableRef}>  {/* ここにrefを追加 */}
+      <div className="comparison-table-wrapper" ref={comparisonTableRef}>
+        {" "}
+        {/* ここにrefを追加 */}
         {/* タイトル部分 */}
         <div>
           <h2>他社との料金比較表</h2>
@@ -168,20 +166,80 @@ function ComparisonTable() {
             他社と比較して圧倒的なコストパフォーマンスを実現
           </p>
         </div>
-
         {/* 比較表 */}
         <div className="whole-table">
           <div className="comparison-table">
             <dl>
-              {tableData.map((row, index) => (
-                <div className="row" key={index}>
-                  <dt>{row.label}</dt>
-                  <dd className="row_border" data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.ZION}</dd>
-                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.A}</dd>
-                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.B}</dd>
-                  <dd data-content={row.label === "金額" ? "pricing" : row.label === "使用時間" ? "time" : row.label === "参加人数" ? "participants" : ""}>{row.C}</dd>
-                </div>
-              ))}
+              {tableData.reduce((acc, row, index) => {
+                if (index === 1) {
+                  acc.push(<div key="group-start" className="group-wrapper" />);
+                }
+
+                acc.push(
+                  <div className="row" key={index}>
+                    <dt>{row.label}</dt>
+                    <dd
+                      className="row_border"
+                      data-content={
+                        row.label === "金額"
+                          ? "pricing"
+                          : row.label === "使用時間"
+                          ? "time"
+                          : row.label === "参加人数"
+                          ? "participants"
+                          : ""
+                      }
+                    >
+                      {row.ZION}
+                    </dd>
+                    <dd
+                      data-content={
+                        row.label === "金額"
+                          ? "pricing"
+                          : row.label === "使用時間"
+                          ? "time"
+                          : row.label === "参加人数"
+                          ? "participants"
+                          : ""
+                      }
+                    >
+                      {row.A}
+                    </dd>
+                    <dd
+                      data-content={
+                        row.label === "金額"
+                          ? "pricing"
+                          : row.label === "使用時間"
+                          ? "time"
+                          : row.label === "参加人数"
+                          ? "participants"
+                          : ""
+                      }
+                    >
+                      {row.B}
+                    </dd>
+                    <dd
+                      data-content={
+                        row.label === "金額"
+                          ? "pricing"
+                          : row.label === "使用時間"
+                          ? "time"
+                          : row.label === "参加人数"
+                          ? "participants"
+                          : ""
+                      }
+                    >
+                      {row.C}
+                    </dd>
+                  </div>
+                );
+
+                if (index === 7) {
+                  acc.push(<div key="group-end" />);
+                }
+
+                return acc;
+              }, [])}
             </dl>
           </div>
         </div>

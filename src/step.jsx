@@ -19,7 +19,7 @@ function Step({ step }) {
     if (stepRef.current) {
       gsap.fromTo(
         stepRef.current,
-        { opacity: 0, y: 100 },  // 初期値
+        { opacity: 0, y: 100 }, // 初期値
         {
           opacity: 1,
           y: 0,
@@ -27,9 +27,9 @@ function Step({ step }) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: stepRef.current,
-            start: "top 80%",   // スクロール位置の調整
+            start: "top 80%", // スクロール位置の調整
             end: "top 50%",
-            toggleActions: "play none none none",  // 一度だけ実行
+            toggleActions: "play none none none", // 一度だけ実行
           },
         }
       );

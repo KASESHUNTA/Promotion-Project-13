@@ -8,6 +8,7 @@ import Inquiry from "./inquiry.jsx";
 import Company from "./company.jsx";
 import FeeList from "./fee.jsx";
 import ComparisonTable from "./PricingComparisonTable.jsx";
+import ComparisonTableSP from "./PricingComparisonTableSP.jsx";
 import Step from "./step.jsx";
 import Questions from "./question.jsx";
 import Footer from "./footer.jsx";
@@ -21,10 +22,9 @@ createRoot(document.getElementById("root")).render(
     <Company />
     <FeeList />
     <ComparisonTable />
+    <ComparisonTableSP />
     <Step />
-
     <Inquiry />
-
     <Questions />
     <Footer />
   </StrictMode>
