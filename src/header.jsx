@@ -54,13 +54,14 @@ function Header() {
               <a onClick={() => scrollToSection("cases")}>導入事例</a>
             </li>
             <li>
-              <a onClick={() => scrollToSection("faq")}>よくある質問</a>
-            </li>
-            <li>
             <a onClick={() => scrollToSection(Phone ? "comparison-sp" : "comparison")}>
                 競合他社との比較
               </a>
             </li>
+            <li>
+              <a onClick={() => scrollToSection("faq")}>よくある質問</a>
+            </li>
+        
           </ul>
           <ul className="nav-right">
             <li className="header__button">

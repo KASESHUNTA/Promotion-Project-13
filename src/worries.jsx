@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 // GSAPプラグイン登録
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +24,7 @@ export const worriesData = [
         <span className="highlight highlight-expensive">「高額」</span>
         <span className="highlight highlight-no-feature">「機能がない」</span>
         <div className="yazirusi">
-          <svg
+          <svg className="worriessvg"
             xmlns="http://www.w3.org/2000/svg"
             width="112"
             height="64"
@@ -51,6 +50,8 @@ export const worriesData = [
     ),
     leftImageUrl: "./worries_left.png",
     rightImageUrl: "./worries_right.png",
+    leftImageUrlTablet: "./worries_SP_leftpng1024.png", // タブレット用画像
+    rightImageUrlTablet: "./worries_right1024.png", // タブレット用画像
     leftImageUrlSP: "./worries_SP_leftpng.png",
     rightImageUrlSP: "./worries_SP_right.png",
     leftAlt: "困っている男性のイラスト",
@@ -66,6 +67,8 @@ function Worry({
   solution,
   leftImageUrl,
   rightImageUrl,
+  leftImageUrlTablet,
+  rightImageUrlTablet,
   leftImageUrlSP,
   rightImageUrlSP,
   leftAlt,
@@ -78,10 +81,18 @@ function Worry({
   // 画像の切り替え処理
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 502) {
+      const width = window.innerWidth;
+
+      if (width <= 502) {
+        // スマホ用画像
         setCurrentLeftImage(leftImageUrlSP);
         setCurrentRightImage(rightImageUrlSP);
+      } else if (width <= 1024) {
+        // タブレット用画像
+        setCurrentLeftImage(leftImageUrlTablet);
+        setCurrentRightImage(rightImageUrlTablet);
       } else {
+        // PC用画像
         setCurrentLeftImage(leftImageUrl);
         setCurrentRightImage(rightImageUrl);
       }
@@ -93,7 +104,7 @@ function Worry({
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [leftImageUrl, rightImageUrl, leftImageUrlSP, rightImageUrlSP]);
+  }, [leftImageUrl, rightImageUrl, leftImageUrlTablet, rightImageUrlTablet, leftImageUrlSP, rightImageUrlSP]);
 
   // アニメーションの設定
   useEffect(() => {
@@ -116,62 +127,58 @@ function Worry({
     }
   }, []);
 
-
+  useEffect(() => {
+    gsap.fromTo(
+      ".scroll",
+      { opacity: 0, y: 50 }, // 初期状態
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".key-visual-container", // トリガー要素
+          start: "top bottom", // アニメーション開始位置
+          end: "center center", // アニメーション終了位置
+          scrub: true, // スクロールに合わせる
+        },
+      }
+    );
+  }, []);
 
   useEffect(() => {
-  gsap.fromTo(
-    ".scroll",
-    { opacity: 0, y: 50 }, // 初期状態
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.5,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".key-visual-container", // トリガー要素
-        start: "top bottom", // アニメーション開始位置
-        end: "center center", // アニメーション終了位置
-        scrub: true, // スクロールに合わせる
-      },
-    }
-  );
-}, []);
-
-
-
-useEffect(() => {
-  gsap.to(".scroll", {
-    y: 1,               // 上下の移動量
-    duration: 1,       // アニメーションの長さ
-    ease: "power1.inOut", // イージング
-    repeat: -1,          // 無限ループ
-    yoyo: true,          // 往復アニメーション
-  });
-}, []);
+    gsap.to(".scroll", {
+      y: 1, // 上下の移動量
+      duration: 1, // アニメーションの長さ
+      ease: "power1.inOut", // イージング
+      repeat: -1, // 無限ループ
+      yoyo: true, // 往復アニメーション
+    });
+  }, []);
 
   return (
     <div ref={worryRef} className="worry-container">
       {/* キービジュアル */}
       <div className="key-visual-container">
-      <div className="scroll">
-        <p>
-          scroll
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="38"
-              height="33"
-              viewBox="0 0 38 33"
-              fill="none"
-            >
-              <path
-                d="M17.2322 31.7678C18.2085 32.7441 19.7915 32.7441 20.7678 31.7678L36.6777 15.8579C37.654 14.8816 37.654 13.2986 36.6777 12.3223C35.7014 11.346 34.1184 11.346 33.1421 12.3223L19 26.4645L4.85786 12.3223C3.88155 11.346 2.29864 11.346 1.32233 12.3223C0.34602 13.2986 0.34602 14.8816 1.32233 15.8579L17.2322 31.7678ZM16.5 2.98122e-08L16.5 30L21.5 30L21.5 -2.98122e-08L16.5 2.98122e-08Z"
-                fill="white"
-              />
-            </svg>
-          </span>
-        </p>
-      </div>
+        <div className="scroll">
+          <p>
+            scroll
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="38"
+                height="33"
+                viewBox="0 0 38 33"
+                fill="none"
+              >
+                <path
+                  d="M17.2322 31.7678C18.2085 32.7441 19.7915 32.7441 20.7678 31.7678L36.6777 15.8579C37.654 14.8816 37.654 13.2986 36.6777 12.3223C35.7014 11.346 34.1184 11.346 33.1421 12.3223L19 26.4645L4.85786 12.3223C3.88155 11.346 2.29864 11.346 1.32233 12.3223C0.34602 13.2986 0.34602 14.8816 1.32233 15.8579L17.2322 31.7678ZM16.5 2.98122e-08L16.5 30L21.5 30L21.5 -2.98122e-08L16.5 2.98122e-08Z"
+                  fill="white"
+                />
+              </svg>
+            </span>
+          </p>
+        </div>
         <img className="key-visual" src={key_visual} alt="キービジュアル" />
       </div>
 
@@ -184,8 +191,6 @@ useEffect(() => {
         できるZION-MEET
       </h1>
 
-    
-
       {/* 説明部分 */}
       <div className="worry-content">
         <p className="worry-title">{title}</p>
@@ -195,16 +200,8 @@ useEffect(() => {
 
       {/* イメージ表示 */}
       <div className="worry-images-container">
-        <img
-          className="worry-image-left"
-          src={currentLeftImage}
-          alt={leftAlt}
-        />
-        <img
-          className="worry-image-right"
-          src={currentRightImage}
-          alt={rightAlt}
-        />
+        <img className="worry-image-left" src={currentLeftImage} alt={leftAlt} />
+        <img className="worry-image-right" src={currentRightImage} alt={rightAlt} />
       </div>
     </div>
   );

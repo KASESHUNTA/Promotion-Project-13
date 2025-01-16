@@ -51,6 +51,7 @@ function StepsFlow() {
         {stepData.map((data) => (
           <Step key={data.id} step={data.step} />
         ))}
+     
       </div>
       <p className="step_introduction">最短1〜3日で導入可能</p>
     </section>

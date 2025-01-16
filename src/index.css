@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans";
+  font-family: "Noto Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 html {
   scroll-behavior: smooth;
@@ -21,6 +23,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   aspect-ratio: 16 / 9; /* PC用の縦横比を設定 */
+  margin-top: 66px;
 }
 .key-visual-container {
   position: relative;
@@ -31,10 +34,26 @@ body {
   color: #fff;
   text-align: center;
   position: absolute;
-  bottom: 50px;
+  /* bottom: 30px; */
+  top: 80vh;
   left: 50%;
   transform: translateX(-50%);
   line-height: 1;
+  @media (max-width: 1500px) {
+    top: 70vh;
+  }
+
+  @media (max-width: 1024px) {
+    top: 53vh;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    top: 37vh;
+  }
+  @media (max-width: 430px) {
+    top: 34vh;
+  }
 }
 .scroll p span {
   display: block;
@@ -473,32 +492,73 @@ a {
 
 /* ご契約の流れ */
 
-.steps-container {
-  display: flex;
-  justify-content: center;
-  gap: 63px;
-  background-image: url("./arrow.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-x: 70%;
-  background-size: 70%;
-  margin-bottom: 120px;
-  
-}
+@media (min-width: 502px) {
+  .steps-container::after {
+    background-color: #e6111b;
+    position: absolute;
+    content: "";
+    width: 70%;
+    height: 30%;
+    top: 35%;
+    left: 15%;
+    /* z-index: 1; */
+  }
 
-.step {
-  text-align: center;
-  border-radius: 30px;
-  background-color: #3f3f3f;
-  width: 250px;
-  height: 250px;
+  .step {
+    position: relative;
+    text-align: center;
+    border-radius: 30px;
+    background-color: #3f3f3f;
+    width: 70%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+  }
+  .steps-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 63px;
+    z-index: 4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 70%;
+    background-size: 70%;
+
+    width: fit-content;
+    margin: 0 auto 120px;
+  }
+  .step:last-child {
+    position: relative; /* または absolute */
+    z-index: 3;
+  }
+  .step:last-child::after {
+    position: absolute;
+    content: url("../public/Stepyazirusi.svg");
+
+    top: 16%;
+    left: 100%;
+
+    transform-origin: left center; /* 拡大の基準点 */
+    z-index: -1;
+  }
 }
 
 .step_text_color {
   color: #fff;
   font-size: 32px;
   text-align: center;
-  margin-top: 103px;
+}
+@media (max-width: 502px), (min-width: 1420px) {
+  .step {
+    width: 250px;
+  }
+  .step:last-child::after {
+    transform: scale(1.32); /* 数字を大きくするほどサイズが大きくなる */
+    top: 27%;
+  }
 }
 .step_introduction {
   font-weight: bold;
@@ -649,11 +709,11 @@ footer {
   max-width: 1200px; /* コンテナの最大幅を設定 */
   margin: 0 auto; /* 中央寄せ */
 }
+
 .fee-plans {
   display: flex;
   justify-content: center;
   gap: 142px; /* 画像間の距離を広げる */
-  margin-bottom: 40px;
 }
 
 .fee_common {
@@ -743,7 +803,479 @@ footer {
   margin-top: 200px;
 }
 
-/* スマホレスポンシブ502pxでします */
+@media (max-width: 1391px) {
+  a {
+    font-size: 17px;
+  }
+  /* こんなお悩みはありませんか？ */
+  .highlight-title,
+  .highlight-expensive,
+  .highlight-no-feature {
+    font-size: 40px;
+  }
+  .highlight-solution {
+    font-size: 55px;
+  }
+}
+@media (max-width: 1254px) {
+  .worry-heading {
+    bottom: 420px;
+  }
+  h1 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 44px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+
+  a {
+    font-size: 15px;
+  }
+  /* こんなお悩みはありませんか？ */
+  .worry-content {
+    font-size: 26px;
+  }
+
+  .highlight-title,
+  .highlight-expensive,
+  .highlight-no-feature {
+    font-size: 40px;
+  }
+  .highlight-solution {
+    font-size: 36px;
+  }
+  /* ZION-MEETの特徴 */
+
+  .features_description {
+    font-size: 20px;
+  }
+  /* 企業様の導入事例 */
+
+  .company-name {
+    font-size: 22px;
+  }
+  .text-background {
+    font-size: 18px;
+  }
+  .logo-background {
+    width: 473px;
+    height: 347px;
+  }
+  .text-background {
+    width: 473px;
+    height: 270px;
+  }
+}
+@media (max-width: 1163px) {
+  a {
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  /* ZION-MEETの特徴 */
+  .features_title {
+    font-size: 32px;
+  }
+  /* こんなお悩みはありませんか？ */
+  .worry-content {
+    font-size: 24px;
+  }
+
+  .highlight-title,
+  .highlight-expensive,
+  .highlight-no-feature {
+    font-size: 36px;
+  }
+  .highlight-solution {
+    font-size: 36px;
+  }
+  /* 企業様の導入事例 */
+
+  .company-name {
+    font-size: 20px;
+  }
+  .text-background {
+    font-size: 16px;
+  }
+  .logo-background {
+    width: 443px;
+    height: 340px;
+  }
+  .text-background {
+    width: 443px;
+    height: 240px;
+  }
+  /* 料金比較表 */
+  /* 1156px以下の場合の料金比較表調整 */
+  @media (max-width: 1156px) {
+    .comparison-table {
+      width: 90%; /* 表全体を縮小 */
+      font-size: 14px; /* 全体のフォントサイズを小さく */
+    }
+
+    .row dt,
+    .row dd {
+      padding: 10px; /* セルのパディングを縮小 */
+      font-size: 14px; /* 文字サイズを小さく */
+    }
+
+    .comparison_p {
+      font-size: 24px; /* タイトルの文字サイズを小さく */
+    }
+
+    .table-header {
+      padding: 5px; /* ヘッダーの余白を縮小 */
+    }
+
+    .zion-logo {
+      width: 100px; /* ロゴのサイズを小さく */
+    }
+
+    .price-number,
+    .price-tilde,
+    .price-unit {
+      font-size: 32px; /* 料金の表示サイズを調整 */
+    }
+
+    .whole-table {
+      padding: 60px 0;
+    }
+
+    /* よくある質問 */
+
+    .question p:first-child {
+      font-size: 20px;
+    }
+    .question p:last-child {
+      font-size: 20px;
+      border-bottom: 2px solid #000;
+    }
+  }
+}
+@media (max-width: 1117px) {
+  .nav-left {
+    gap: 10px;
+  }
+}
+@media (max-width: 1063px) {
+  /* ヘッダー */
+  .nav-left {
+    gap: 0px;
+  }
+  .nav-right {
+    gap: 0px;
+  }
+
+  /* こんなお悩みはありませんか？ */
+  .worriessvg {
+    @media (min-width: 502px) {
+      transform: scale(0.6);
+      transform-origin: center;
+    }
+  }
+  /* 企業様の導入事例 */
+
+  .logo-background {
+    width: 400px;
+    height: 300px;
+  }
+  .text-background {
+    width: 401px;
+    height: 230px;
+  }
+
+  .company-grid {
+    gap: 10px;
+  }
+  .company-card {
+    margin: 55px;
+  }
+  .company-name {
+    font-size: 18px;
+  }
+  .text-background {
+    font-size: 14px;
+  }
+  /* 料金 */
+  .fee-plans {
+    gap: 80px;
+  }
+
+  /* ご契約の流れ */
+
+  .step_introduction {
+    font-size: 26px;
+  }
+  .step_text_color {
+    font-size: 26px;
+  }
+}
+@media (max-width: 1030px) {
+  /* ヘッダー関連 */
+  header {
+    gap: 10px;
+  }
+  .header__button {
+    padding: 9px 28px;
+  }
+  nav ul li {
+    margin-right: 10px;
+  }
+
+  /* ZION-MEETの特徴 */
+  .features_title {
+    font-size: 26px;
+  }
+
+  /* 料金比較表 */
+  .comparison-table {
+    width: 80%; /* 表全体を縮小 */
+    font-size: 12px; /* 全体のフォントサイズを小さく */
+  }
+
+  .row dt,
+  .row dd {
+    padding: 8px; /* セルのパディングを縮小 */
+    font-size: 12px; /* 文字サイズを小さく */
+  }
+
+  .comparison_p {
+    font-size: 20px; /* タイトルの文字サイズを小さく */
+  }
+
+  .table-header {
+    padding: 4px; /* ヘッダーの余白を縮小 */
+  }
+
+  .zion-logo {
+    width: 90px; /* ロゴのサイズを小さく */
+  }
+
+  .price-number,
+  .price-tilde,
+  .price-unit {
+    font-size: 28px; /* 料金の表示サイズを調整 */
+  }
+
+  .features_description {
+    font-size: 14px;
+  }
+  /* ご契約の流れ */
+  .steps-container {
+    gap: 15px;
+  }
+}
+@media (max-width: 923px) {
+  /* ヘッダー */
+  header {
+    gap: 0px;
+  }
+  .nav-left {
+    margin-left: 15px;
+  }
+  .nav-right {
+    margin-right: 10px;
+  }
+
+  /* 企業様の導入事例 */
+  .company-grid {
+    gap: 0px;
+  }
+  .logo-background {
+    width: 380px;
+    height: 270px;
+  }
+  .text-background {
+    width: 382px;
+    height: 210px;
+  }
+  .text-background {
+    font-size: 13px;
+  }
+  .company-name {
+    font-size: 16px;
+  }
+  /* ハンバーガーメニュー */
+  .header__btn {
+    width: 48px;
+    height: 24px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    position: absolute; /* 親要素に対して固定 */
+    top: 15px; /* 上部からの固定位置 */
+    right: 20px; /* 右端からの固定位置 */
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .header__btn.open {
+    position: fixed;
+    right: 4%;
+  }
+
+  .line {
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* メニューが開いている時のライン（バツ印）の色を変更 */
+  .header__btn .line {
+    height: 2px;
+    width: 100%;
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* メニューが開いたときのハンバーガーメニューの変更 */
+  .header__btn.open .line {
+    background-color: #3f3f3f;
+  }
+
+  /* 上の線の変化 */
+  .header__btn__line01.open {
+    transform: rotate(45deg) translate(8px, 8px); /* バツ印の上線 */
+  }
+
+  /* 中央の線を消す */
+  .header__btn__line02.open {
+    opacity: 0;
+  }
+
+  /* 下の線の変化 */
+  .header__btn__line03.open {
+    transform: rotate(-45deg) translate(8px, -8px); /* バツ印の下線 */
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 初期状態：画面外 */
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    transition: right 0.5s ease-in-out; /* アニメーション追加 */
+    z-index: 998;
+  }
+  nav.open {
+    right: 0; /* 画面内にスライドン */
+  }
+
+  nav.open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    padding-top: 70px;
+  }
+  .nav-left {
+    flex-direction: column;
+    margin-left: 0;
+  }
+  .nav-right {
+    flex-direction: column;
+    margin-right: 0;
+  }
+
+  .GNAVJS {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 100px; /* メニュー全体の位置調整 */
+  }
+  .GNAVJS ul {
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .GNAVJS li {
+    margin: 20px 0;
+  }
+
+  .GNAVJS li a {
+    color: #000;
+    font-size: 18px;
+  }
+  .GNAVJS li.header__button {
+    background-color: transparent;
+  }
+
+  .GNAVJS li.header__button a {
+    color: #000;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .GNAVJS a {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+  }
+}
+@media (max-width: 768px) {
+  /* キービジュアル */
+  .worry-heading {
+    font-size: 36px;
+
+    bottom: 310px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  .worry-heading {
+    margin-left: 50px;
+  }
+
+  .worry-image-right {
+    right: calc(40% - 300px);
+  }
+  .worry-image-left {
+    position: absolute;
+    left: calc(70% - 519px);
+    bottom: -15px;
+  }
+  /* 企業様の導入事例 */
+  .company-card {
+    margin: 20px;
+  }
+  .logo-background {
+    width: 330px;
+    height: 240px;
+  }
+  .text-background {
+    width: 330px;
+    height: 210px;
+  }
+  .company-name {
+    font-size: 13px;
+  }
+  .text-background {
+    padding: 9px 41px;
+  }
+  /* 料金 */
+  .fee_Note {
+    font-size: 16px;}
+
+  /* ご契約の流れ */
+  .step_text_color {
+    font-size: 22px;
+  }
+
+  .step:last-child::after {
+    top: 0;
+  }
+}
 
 @media (max-width: 502px) {
   body {
@@ -751,7 +1283,7 @@ footer {
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 24px !important;
   }
 
   h2 {
@@ -852,7 +1384,7 @@ footer {
 
   .worry-heading {
     bottom: 220px;
-    margin-left: 35%;
+    margin-left: 24%;
   }
 
   .scroll {
@@ -862,7 +1394,7 @@ footer {
     text-align: center;
     position: absolute;
     bottom: 50px;
-    left: 54%;
+    left: 49%;
     transform: translateX(-50%);
     line-height: 1;
   }
@@ -880,6 +1412,7 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     aspect-ratio: 1;
+    margin-top: 0;
   }
 
   .yazirusi {
@@ -1028,9 +1561,6 @@ footer {
     width: 78%; /* カードの幅設定 */
     margin: 0 auto; /* 左右のマージンを自動で調整して中央寄せ */
   }
-  .logo-background {
-    height: 245px;
-  }
 
   .company-name {
     font-size: 16px;
@@ -1041,6 +1571,9 @@ footer {
   .text-background {
     width: 100%; /* 親要素いっぱいに広げる */
     text-align: left;
+  }
+  .logo-background {
+    height: 245px;
   }
   /* 料金プラン */
   .fee_img {
@@ -1126,12 +1659,54 @@ footer {
     color: #333 !important;
   }
   /* ご契約の流れ */
+  .step {
+    position: relative;
+    text-align: center;
+    border-radius: 30px;
+    background-color: #3f3f3f;
+    width: 70%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+  }
+  .steps-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 63px;
+    z-index: 4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 70%;
+    background-size: 70%;
+
+    width: fit-content;
+    margin: 0 auto 120px;
+  }
+  .step:last-child {
+    position: relative; /* または absolute */
+    z-index: 3;
+  }
+  .step:last-child::after {
+    position: absolute;
+    content: url("../public/Stepyazirusi.svg");
+
+    top: 16%;
+    left: 100%;
+
+    transform-origin: left center; /* 拡大の基準点 */
+    z-index: -1;
+  }
+
   .steps-container {
     padding-bottom: 76px;
     background-size: contain;
     flex-direction: column;
     gap: 20px;
     background-image: url(./arrowtate.svg);
+    background-repeat: no-repeat;
     background-position: 27%;
   }
   .steps-container::before {
@@ -1146,11 +1721,15 @@ footer {
     background-position: 0% 80%;
   }
 
+
+
   .step {
     width: 140px;
     height: 140px;
     padding: 41px 0;
-    margin-left: 15%;
+    margin-left: -70%;
+    background-color: #3f3f3f;
+    display: flex;
   }
   .step_introduction {
     display: none;
@@ -1163,6 +1742,9 @@ footer {
   /* 矢印の調整 */
   .step_introduction::before {
     display: none;
+  }
+  .step.step:last-child::after {
+    content: none;
   }
 
   /* よくある質問 */
@@ -1201,69 +1783,6 @@ footer {
   footer p {
     margin: 60px;
     font-size: 12px;
-  }
-  /* ハンバーガーメニュー */
-  .header__btn {
-    width: 48px;
-    height: 24px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    position: absolute; /* 親要素に対して固定 */
-    top: 15px; /* 上部からの固定位置 */
-    right: 20px; /* 右端からの固定位置 */
-    z-index: 999;
-    cursor: pointer;
-  }
-
-  .header__btn.open {
-    position: fixed;
-    right: 4%;
-  }
-
-  .line {
-    height: 2px;
-    width: 100%;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-  }
-
-  /* メニューが開いている時のライン（バツ印）の色を変更 */
-  .header__btn .line {
-    height: 2px;
-    width: 100%;
-
-    transition: all 0.3s ease-in-out;
-  }
-
-  /* メニューが開いたときのハンバーガーメニューの変更 */
-  .header__btn.open .line {
-    background-color: #3f3f3f;
-  }
-
-  /* 上の線の変化 */
-  .header__btn__line01.open {
-    transform: rotate(45deg) translate(8px, 8px); /* バツ印の上線 */
-  }
-
-  /* 中央の線を消す */
-  .header__btn__line02.open {
-    opacity: 0;
-  }
-
-  /* 下の線の変化 */
-  .header__btn__line03.open {
-    transform: rotate(-45deg) translate(8px, -8px); /* バツ印の下線 */
-  }
-  nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background-color: #fff;
-    transition: all 0.5s ease-in-out;
-    z-index: 998;
   }
 }
 
