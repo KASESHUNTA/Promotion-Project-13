@@ -1025,6 +1025,13 @@ footer {
   nav ul li {
     margin-right: 10px;
   }
+  /* こんなお悩みはありませんか？ */
+  .worry-image-left {
+    left: calc(47% - 375px);
+  }
+  worry-image-right {
+    right: calc(36% - 260px);
+  }
 
   /* ZION-MEETの特徴 */
   .features_title {
@@ -1265,7 +1272,11 @@ footer {
   }
   /* 料金 */
   .fee_Note {
-    font-size: 16px;}
+    font-size: 16px;
+  }
+  .fee-item p.description {
+    margin-bottom: 70px;
+  }
 
   /* ご契約の流れ */
   .step_text_color {
@@ -1671,6 +1682,7 @@ footer {
     justify-content: center;
     z-index: 3;
   }
+
   .steps-container {
     position: relative;
     display: flex;
@@ -1681,6 +1693,7 @@ footer {
     background-position: center;
     background-position-x: 70%;
     background-size: 70%;
+    z-index: 10;
 
     width: fit-content;
     margin: 0 auto 120px;
@@ -1701,33 +1714,33 @@ footer {
   }
 
   .steps-container {
-    padding-bottom: 76px;
+    padding-bottom: 61px;
     background-size: contain;
     flex-direction: column;
     gap: 20px;
     background-image: url(./arrowtate.svg);
     background-repeat: no-repeat;
-    background-position: 27%;
+
+    /* 矢印の位置を変数化 */
+    background-position: var(--arrow-position, -18%); /* デフォルト値27% */
   }
   .steps-container::before {
-    left: 65%;
+    left: 95%;
     background-image: url(./yazirusitate.svg);
     background-repeat: no-repeat;
     content: "";
     width: 100px;
-    height: 800px;
+    height: 665px;
     position: absolute;
     background-size: 70%;
     background-position: 0% 80%;
   }
 
-
-
   .step {
     width: 140px;
     height: 140px;
     padding: 41px 0;
-    margin-left: -70%;
+    margin-left: -31%;
     background-color: #3f3f3f;
     display: flex;
   }
