@@ -23,30 +23,33 @@ export const worriesData = [
         <br />
         <span className="highlight highlight-expensive">「高額」</span>
         <span className="highlight highlight-no-feature">「機能がない」</span>
-        <div className="yazirusi">
-          <svg className="worriessvg"
-            xmlns="http://www.w3.org/2000/svg"
-            width="112"
-            height="64"
-            viewBox="0 0 112 64"
-            fill="none"
-          >
-            <path
-              d="M50.6967 61.3033C53.6256 64.2322 58.3744 64.2322 61.3033 61.3033L109.033 13.5736C111.962 10.6447 111.962 5.89592 109.033 2.96699C106.104 0.038057 101.355 0.0380573 98.4264 2.96699L56 45.3934L13.5736 2.96699C10.6447 0.0380612 5.89592 0.0380614 2.96699 2.96699C0.0380574 5.89593 0.0380576 10.6447 2.96699 13.5736L50.6967 61.3033ZM48.5 49L48.5 56L63.5 56L63.5 49L48.5 49Z"
-              fill="#EDEBEB"
-            />
-          </svg>
-        </div>
       </>
     ),
+    yazirusi: (
+      <div className="yazirusi">
+        <svg
+          className="worriessvg"
+          xmlns="http://www.w3.org/2000/svg"
+          width="112"
+          height="64"
+          viewBox="0 0 112 64"
+          fill="none"
+        >
+          <path
+            d="M50.6967 61.3033C53.6256 64.2322 58.3744 64.2322 61.3033 61.3033L109.033 13.5736C111.962 10.6447 111.962 5.89592 109.033 2.96699C106.104 0.038057 101.355 0.0380573 98.4264 2.96699L56 45.3934L13.5736 2.96699C10.6447 0.0380612 5.89592 0.0380614 2.96699 2.96699C0.0380574 5.89593 0.0380576 10.6447 2.96699 13.5736L50.6967 61.3033ZM48.5 49L48.5 56L63.5 56L63.5 49L48.5 49Z"
+            fill="#EDEBEB"
+          />
+        </svg>
+      </div>
+    ),
     solution: (
-      <p className="worry-solution">
+      <>
         その悩み、
         <br className="solution-break" />
         ZION-MEETが
         <span className="highlight highlight-solution">解決</span>
         します！
-      </p>
+      </>
     ),
     leftImageUrl: "./worries_left.png",
     rightImageUrl: "./worries_right.png",
@@ -104,7 +107,14 @@ function Worry({
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [leftImageUrl, rightImageUrl, leftImageUrlTablet, rightImageUrlTablet, leftImageUrlSP, rightImageUrlSP]);
+  }, [
+    leftImageUrl,
+    rightImageUrl,
+    leftImageUrlTablet,
+    rightImageUrlTablet,
+    leftImageUrlSP,
+    rightImageUrlSP,
+  ]);
 
   // アニメーションの設定
   useEffect(() => {
@@ -200,8 +210,16 @@ function Worry({
 
       {/* イメージ表示 */}
       <div className="worry-images-container">
-        <img className="worry-image-left" src={currentLeftImage} alt={leftAlt} />
-        <img className="worry-image-right" src={currentRightImage} alt={rightAlt} />
+        <img
+          className="worry-image-left"
+          src={currentLeftImage}
+          alt={leftAlt}
+        />
+        <img
+          className="worry-image-right"
+          src={currentRightImage}
+          alt={rightAlt}
+        />
       </div>
     </div>
   );

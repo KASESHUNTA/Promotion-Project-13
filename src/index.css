@@ -186,7 +186,7 @@ nav ul li:last-child {
 .worry-image-right {
   position: absolute;
   right: calc(33% - 299px);
-  bottom: 0;
+  bottom: -30;
 }
 .worry-images-container {
   width: 100%;
@@ -198,12 +198,12 @@ nav ul li:last-child {
 .worry-image-left {
   position: absolute;
   left: calc(47% - 519px);
-  bottom: -15px;
+  bottom: -31px;
 }
 
 .worry-image-right {
   position: absolute;
-  right: calc(36% - 300px); /* 中央基準で右に調整 */
+  right: calc(32% - 300px); /* 中央基準で右に調整 */
   bottom: 0;
 }
 
@@ -493,7 +493,7 @@ a {
 /* ご契約の流れ */
 
 @media (min-width: 502px) {
-  .steps-container::after {
+  .steps-container-after {
     background-color: #e6111b;
     position: absolute;
     content: "";
@@ -501,15 +501,14 @@ a {
     height: 30%;
     top: 35%;
     left: 15%;
-    /* z-index: 1; */
   }
 
   .step {
+    width: 25%;
+    background-color: #3f3f3f;
     position: relative;
     text-align: center;
     border-radius: 30px;
-    background-color: #3f3f3f;
-    width: 70%;
     aspect-ratio: 1;
     display: flex;
     flex-direction: column;
@@ -537,12 +536,15 @@ a {
   .step:last-child::after {
     position: absolute;
     content: url("../public/Stepyazirusi.svg");
-
     top: 16%;
     left: 100%;
-
     transform-origin: left center; /* 拡大の基準点 */
     z-index: -1;
+    @media (max-width: 1065px) {
+      transform: scale(0.8);
+      transform-origin: left center;
+      top: 8%;
+    }
   }
 }
 
@@ -1025,14 +1027,18 @@ footer {
   nav ul li {
     margin-right: 10px;
   }
+
   /* こんなお悩みはありませんか？ */
   .worry-image-left {
     left: calc(47% - 375px);
-  }
-  worry-image-right {
-    right: calc(36% - 260px);
+    bottom: -60px;
   }
 
+  .worry-image-right {
+    position: absolute;
+    right: calc(39% - 300px);
+    bottom: -35px;
+  }
   /* ZION-MEETの特徴 */
   .features_title {
     font-size: 26px;
@@ -1250,7 +1256,7 @@ footer {
   .worry-image-left {
     position: absolute;
     left: calc(70% - 519px);
-    bottom: -15px;
+    bottom: -57px;
   }
   /* 企業様の導入事例 */
   .company-card {
@@ -1452,7 +1458,7 @@ footer {
     max-width: 200px; /* 最大幅を制限 */
     height: auto;
     position: absolute;
-    left: 5%; /* 左端に寄せる */
+    left: 3%; /* 左端に寄せる */
     bottom: 0;
   }
 
@@ -1462,7 +1468,7 @@ footer {
     max-width: 200px; /* 最大幅を制限 */
     height: auto;
     position: absolute;
-    right: 5%; /* 右端に寄せる */
+    right: 3%; /* 右端に寄せる */
     bottom: 0;
   }
 
@@ -1697,6 +1703,9 @@ footer {
 
     width: fit-content;
     margin: 0 auto 120px;
+  }
+  .steps-container-after {
+    display: none;
   }
   .step:last-child {
     position: relative; /* または absolute */
