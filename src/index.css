@@ -98,7 +98,7 @@ header {
   color: white;
   margin-left: 17px; /* ボタン同士の余白 */
   margin-right: 5px;
-  /* �����修正 */
+  /* 修正 */
   display: inline-block;
   text-align: center;
 }
@@ -473,16 +473,19 @@ a {
 .highlight-unlimited {
   color: #e6111b;
   font-size: 20px;
+  font-weight: bold;
 }
 
 /* ZIONのハイライト */
 .highlight-zion {
   color: #e6111b;
+  font-weight: bold;
 }
 
 /* ブレイクアウトルームの△ハイライト */
 .highlight-limited {
-  color: #40ff16;
+  color: #069d58;
+  font-weight: bold;
 }
 
 .row dd br {
@@ -1906,4 +1909,40 @@ footer {
   color: #666666;
   font-size: 14px;
   font-weight: normal;
+}
+
+.infinite-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0; /* 上下の余白 */
+}
+
+.infinite-scroll-content {
+  display: flex;
+  gap: 50px; /* ロゴ間の間隔 */
+  align-items: center;
+}
+
+.scroll-item {
+  flex-shrink: 0; /* アイテムが縮まないようにする */
+}
+
+.scroll-item img {
+  width: 150px; /* ロゴの幅を調整 */
+  height: auto;
+  object-fit: contain; /* アスペクト比を保持 */
+}
+
+/* 必要に応じて位置調整 */
+.worry-container {
+  position: relative;
+}
+
+/* 無限スクロールの位置を調整 */
+.infinite-scroll-container {
+  position: absolute;
+  top: 100px; /* 上からの位置 */
+  /* または */
+  bottom: 100px; /* 下からの位置 */
 }

@@ -90,7 +90,9 @@ function Feature({ id, title, description, imageUrl, alt }) {
   return (
     <div
       ref={featureRef}
+
       className={clsx("class1", id % 2 === 0 && "class2")}
+      // clsxを使って、クラスを動的に設定
     >
       <div className="feature_text">
         <h3 className="features_title">{title}</h3>

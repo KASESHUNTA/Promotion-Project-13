@@ -9,6 +9,21 @@ gsap.registerPlugin(ScrollTrigger);
 export const worriesData = [
   {
     id: 1,
+    infiniteScroll: (
+      <div className="infinite-scroll-container">
+        <div className="infinite-scroll-content">
+          <div className="scroll-item">画像1</div>
+          <div className="scroll-item">画像2</div>
+          <div className="scroll-item">画像3</div>
+          {/* テスト用のダミーコンテンツ - 後で実際の画像に置き換え可能 */}
+        </div>
+        <div className="infinite-scroll-content">
+          <div className="scroll-item">画像1</div>
+          <div className="scroll-item">画像2</div>
+          <div className="scroll-item">画像3</div>
+        </div>
+      </div>
+    ),
     key_visual: "./key_visual.png",
     title: (
       <>
@@ -65,6 +80,7 @@ export const worriesData = [
 // 個別コンポーネント
 function Worry({
   key_visual,
+  infiniteScroll,
   title,
   description,
   solution,
@@ -166,8 +182,20 @@ function Worry({
     });
   }, []);
 
+  // 無限スクロールのアニメーション
+  useEffect(() => {
+    gsap.to(".infinite-scroll-content", {
+      x: "-100%",
+      repeat: -1,
+      duration: 20,
+      ease: "none",
+      repeatDelay: 0,
+    });
+  }, []);
+
   return (
     <div ref={worryRef} className="worry-container">
+      {infiniteScroll}
       {/* キービジュアル */}
       <div className="key-visual-container">
         <div className="scroll">
